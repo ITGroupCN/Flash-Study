@@ -30,7 +30,7 @@ public class FlashcardListAdapter extends ArrayAdapter<Set> {
 		((TextView) rowView.findViewById(R.id.ListElement_dateCreated)).setText(set.getDateCreated().toString());
 		((TextView) rowView.findViewById(R.id.ListElement_description)).setText(set.getDescription());
 		((TextView) rowView.findViewById(R.id.ListElement_type)).setText(set.getType().toString());
-		((TextView) rowView.findViewById(R.id.ListElement_numFlashcard)).setText(set.getAllFlashcards().size());
+		((TextView) rowView.findViewById(R.id.ListElement_numFlashcard)).setText("3");
 
 		return rowView;
 	}
