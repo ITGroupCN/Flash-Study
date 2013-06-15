@@ -3,6 +3,7 @@ package com.flashstudy.android;
 import java.text.SimpleDateFormat;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,9 @@ public class FlashcardListAdapter extends ArrayAdapter<Set> {
 		Set set = _sets[position];
 		LayoutInflater inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowView = inflater.inflate(R.layout.list_element_flashcard, parent, false);
+		Typeface tf = Typeface.createFromAsset(_context.getAssets(),"century_gothic.ttf");
+		setTypeface(rowView, tf);
+		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd");
 		
 		((TextView) rowView.findViewById(R.id.ListElement_name)).setText(set.getName());
@@ -36,5 +40,17 @@ public class FlashcardListAdapter extends ArrayAdapter<Set> {
 		((TextView) rowView.findViewById(R.id.ListElement_numFlashcard)).setText("3");
 
 		return rowView;
+	}
+	
+	private void setTypeface(View view, Typeface typeface) {
+		if(!(view instanceof ViewGroup)) {
+			if(view instanceof TextView)
+				((TextView) view).setTypeface(typeface);
+			return;
+		}
+		
+		ViewGroup viewGroup = (ViewGroup) view;
+		for(int i = 0; i < viewGroup.getChildCount(); i++)
+			setTypeface(viewGroup.getChildAt(i), typeface);
 	}
 }
