@@ -10,5 +10,27 @@
 	    android:layout_alignParentLeft="true"
 	    android:layout_alignParentTop="true"/>
 	
-	<TextView android:id="@+id/ListElement_"
+	<TextView android:id="@+id/ListElement_dateCreated"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/ListElement_name"
+	    android:layout_alignParentLeft="true"/>
+	
+	<TextView android:id="@+id/ListElement_description"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@id/ListElement_dateCreated"
+	    android:layout_below="@id/ListElement_name"/>
+	
+	<TextView android:id="@+id/ListElement_type"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@id/ListElement_name"
+	    android:layout_above="@id/ListElement_description"/>
+	
+	<TextView android:id="@+id/ListElement_numFlashcard"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentRight="true"
+	    android:layout_alignParentTop="true"/>
 </RelativeLayout>
