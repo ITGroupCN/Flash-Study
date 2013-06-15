@@ -31,9 +31,15 @@ public final class R {
         public static final int ListElement_type=0x7f080008;
         public static final int MenuActivity_buttonPanel=0x7f080002;
         public static final int MenuActivity_cameraUploadButton=0x7f080003;
+<<<<<<< HEAD
         public static final int MenuActivity_flashcardList=0x7f080001;
         public static final int MenuActivity_formUploadButton=0x7f080004;
         public static final int MenuActivity_logo=0x7f080000;
+=======
+        public static final int MenuActivity_formUploadButton=0x7f080004;
+        public static final int MenuActivity_logo=0x7f080000;
+        public static final int MenuActivity_setList=0x7f080001;
+>>>>>>> b520f7f509cc0eb4aac849eab9288139579945aa
         public static final int action_settings=0x7f08000a;
     }
     public static final class layout {
