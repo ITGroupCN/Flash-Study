@@ -16,9 +16,7 @@ public class CameraActivity {
 		
 	}
 	
-	private void setupSession() {
-	    mEvernoteSession = EvernoteSession.getInstance(this, CONSUMER_KEY, CONSUMER_SECRET, EVERNOTE_HOST);
-	}
-
-	
+	//private void setupSession() {
+	//   mEvernoteSession = EvernoteSession.getInstance(this, CONSUMER_KEY, CONSUMER_SECRET, EVERNOTE_HOST);
+	//}
 }
