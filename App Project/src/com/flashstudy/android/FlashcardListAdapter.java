@@ -1,5 +1,7 @@
 package com.flashstudy.android;
 
+import java.text.SimpleDateFormat;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,9 +27,10 @@ public class FlashcardListAdapter extends ArrayAdapter<Set> {
 		Set set = _sets[position];
 		LayoutInflater inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowView = inflater.inflate(R.layout.list_element_flashcard, parent, false);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd");
 		
 		((TextView) rowView.findViewById(R.id.ListElement_name)).setText(set.getName());
-		((TextView) rowView.findViewById(R.id.ListElement_dateCreated)).setText(set.getDateCreated().toString());
+		((TextView) rowView.findViewById(R.id.ListElement_dateCreated)).setText(dateFormat.format(set.getDateCreated()));
 		((TextView) rowView.findViewById(R.id.ListElement_description)).setText(set.getDescription());
 		((TextView) rowView.findViewById(R.id.ListElement_type)).setText(set.getType().toString());
 		((TextView) rowView.findViewById(R.id.ListElement_numFlashcard)).setText("3");

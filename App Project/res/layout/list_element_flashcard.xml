@@ -11,7 +11,9 @@
 	    android:layout_height="wrap_content"
 	    android:layout_alignParentLeft="true"
 	    android:layout_alignParentTop="true"
-	    style="@style/DefaultText.Medium"/>
+	    android:textColor="@color/orange"
+	    android:layout_marginRight="5dp"
+	    style="@style/DefaultText.Large"/>
 	
 	<TextView android:id="@+id/ListElement_dateCreated"
 	    android:layout_width="wrap_content"
@@ -19,6 +21,7 @@
 	    android:layout_below="@id/ListElement_name"
 	    android:layout_alignParentLeft="true"
 	    android:textStyle="italic"
+	    android:layout_marginRight="5dp"
 	    style="@style/DefaultText.Medium"/>
 	
 	<TextView android:id="@+id/ListElement_description"
