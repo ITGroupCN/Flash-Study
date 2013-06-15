@@ -35,7 +35,7 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_toRightOf="@id/ListElement_name"
-	    android:layout_above="@id/ListElement_description"
+	    android:layout_alignParentTop="true"
 	    style="@style/DefaultText.Medium"/>
 	
 	<TextView android:id="@+id/ListElement_numFlashcard"

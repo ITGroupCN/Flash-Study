@@ -28,15 +28,20 @@ public class FlashcardListAdapter extends ArrayAdapter<Set> {
 		Set set = _sets[position];
 		LayoutInflater inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowView = inflater.inflate(R.layout.list_element_flashcard, parent, false);
-		Typeface tf = Typeface.createFromAsset(_context.getAssets(),"century_gothic.ttf");
-		setTypeface(rowView, tf);
+		Typeface tf_normal = Typeface.createFromAsset(_context.getAssets(),"century_gothic.ttf");
+		Typeface tf_italic = Typeface.createFromAsset(_context.getAssets(),"century_gothic_italic.ttf");
+		setTypeface(rowView, tf_normal);
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd");
+		TextView dateCreated = (TextView) rowView.findViewById(R.id.ListElement_dateCreated);
+		dateCreated.setText(dateFormat.format(set.getDateCreated()) + ":");
+		
+		TextView description = (TextView) rowView.findViewById(R.id.ListElement_description);
+		description.setText(set.getDescription());
+		setTypeface(description, tf_italic);
 		
 		((TextView) rowView.findViewById(R.id.ListElement_name)).setText(set.getName());
-		((TextView) rowView.findViewById(R.id.ListElement_dateCreated)).setText(dateFormat.format(set.getDateCreated()));
-		((TextView) rowView.findViewById(R.id.ListElement_description)).setText(set.getDescription());
-		((TextView) rowView.findViewById(R.id.ListElement_type)).setText(set.getType().toString());
+		((TextView) rowView.findViewById(R.id.ListElement_type)).setText("(" + set.getType().toString() + ")");
 		((TextView) rowView.findViewById(R.id.ListElement_numFlashcard)).setText("3");
 
 		return rowView;

@@ -31,7 +31,7 @@ public class MenuActivity extends Activity {
 		cards.add(new Flashcard("fbla", "gay"));
 		cards.add(new Flashcard("michael", "wrassla"));
 		
-		Set set1 = new Set("Test Set", cards, new Date(), FlashcardType.SPANISH, "hello");
+		Set set1 = new Set("Test Set", cards, new Date(), FlashcardType.SPANISH, "A test set that shows shravs gay shit.");
 		
 		_sets = new Set[1];
 		_sets[0] = set1;
