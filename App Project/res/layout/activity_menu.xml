@@ -6,7 +6,16 @@
     android:background="@color/black"
     android:orientation="vertical" >
     
-    <include android:id="@+id/header" layout="@layout/layout_header"/>
+    <include android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:height="50dp" 
+        layout="@layout/layout_header"/>
+    
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/orange"
+        android:layout_marginBottom="10dp"/>
     
     <ListView android:id="@+id/MenuActivity_setList"
         android:layout_width="fill_parent"

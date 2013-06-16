@@ -15,12 +15,18 @@ import com.flashstudy.flashcard.Set;
 
 public class FlashcardListAdapter extends BaseAdapter {
 
+	private LayoutInflater _inflater;
 	private Context _context;
 	private ArrayList<Set> _sets;
-
+	private Typeface _tf, _tfItalic;
+	
 	public FlashcardListAdapter(Context context, ArrayList<Set> sets) {
 		_context = context;
 		_sets = sets;
+		
+		_inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		_tf = Typeface.createFromAsset(_context.getAssets(),"century_gothic.ttf");
+		_tfItalic = Typeface.createFromAsset(_context.getAssets(), "century_gothic_italic.ttf");
 	}
 	
 	@Override
@@ -42,25 +48,24 @@ public class FlashcardListAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		Set set = _sets.get(position);
 		
-		LayoutInflater inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View rowView = inflater.inflate(R.layout.list_element_flashcard, parent, false);
-		Typeface tf_normal = Typeface.createFromAsset(_context.getAssets(),"century_gothic.ttf");
-		Typeface tf_italic = Typeface.createFromAsset(_context.getAssets(),"century_gothic_italic.ttf");
-		setTypeface(rowView, tf_normal);
-		
+        convertView = _inflater.inflate(R.layout.list_element_flashcard, null);
+        TextView nameField = (TextView) convertView.findViewById(R.id.ListElementFlashcard_name);
+        TextView descField = (TextView) convertView.findViewById(R.id.ListElementFlashcard_description);
+		TextView dateField = (TextView) convertView.findViewById(R.id.ListElementFlashcard_dateCreated);
+		TextView typeField = (TextView) convertView.findViewById(R.id.ListElementFlashcard_type);
+		TextView numField = (TextView) convertView.findViewById(R.id.ListElementFlashcard_numFlashcard);
+			
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd");
-		TextView dateCreated = (TextView) rowView.findViewById(R.id.ListElementFlashcard_dateCreated);
-		dateCreated.setText(dateFormat.format(set.getDateCreated()) + ":");
-		
-		TextView description = (TextView) rowView.findViewById(R.id.ListElementFlashcard_description);
-		description.setText(set.getDescription());
-		setTypeface(description, tf_italic);
-		
-		((TextView) rowView.findViewById(R.id.ListElementFlashcard_name)).setText(set.getName());
-		((TextView) rowView.findViewById(R.id.ListElementFlashcard_type)).setText("(" + set.getType().toString() + ")");
-		((TextView) rowView.findViewById(R.id.ListElementFlashcard_numFlashcard)).setText("3");
+		dateField.setText(dateFormat.format(set.getDateCreated()) + ":");
+		descField.setText(set.getDescription());
+		nameField.setText(set.getName());
+		typeField.setText("(" + set.getType().toString() + ")");
+		numField.setText("" + set.getAllFlashcards().size());
 
-		return rowView;
+		setTypeface(convertView, _tf);
+		setTypeface(descField, _tfItalic);
+		
+		return convertView;
 	}
 	
 	private void setTypeface(View view, Typeface typeface) {

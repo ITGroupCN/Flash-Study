@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.flashstudy.flashcard.Flashcard;
 import com.flashstudy.flashcard.FlashcardType;
@@ -37,15 +42,12 @@ public class MenuActivity extends Activity {
 		
 		_flashcardAdapter = new FlashcardListAdapter(this, _sets);
 		
-		_sets.add(set1);
-		_flashcardAdapter.notifyDataSetChanged();
-		
-		ListView setList = (ListView) findViewById(R.id.MenuActivity_setList);
-		setList.setAdapter(_flashcardAdapter);
-		
 		LinearLayout layout = (LinearLayout) findViewById(R.id.MenuActivity_layout);
 		Typeface tf = Typeface.createFromAsset(getAssets(),"century_gothic.ttf");
 		setTypeface(layout, tf);
+		
+		ListView setList = (ListView) findViewById(R.id.MenuActivity_setList);
+		setList.setAdapter(_flashcardAdapter);
 	}
 	
 	private void setTypeface(View view, Typeface typeface) {

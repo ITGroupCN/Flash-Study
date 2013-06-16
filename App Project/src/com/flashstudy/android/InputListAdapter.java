@@ -65,8 +65,6 @@ public class InputListAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 			_flashcards.get(position).setTerm(holder._termField.getText().toString());
 			_flashcards.get(position).setDefinition(holder._definitionField.getText().toString());
-			
-			Toast.makeText(_context, _flashcards.get(position).toString(), Toast.LENGTH_SHORT).show();
 		}
 		
 		//if(position == selectedListItem) {  

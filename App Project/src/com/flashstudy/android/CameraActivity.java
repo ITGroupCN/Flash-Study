@@ -1,6 +1,14 @@
 package com.flashstudy.android;
 
+import java.io.ByteArrayOutputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -41,11 +49,31 @@ public class CameraActivity extends Activity {
 		Note note = new Note();
 		note.setTitle("Shrav is a bitch");
 		note.setContent(EvernoteUtil.NOTE_PREFIX + "Shrav likes men" + EvernoteUtil.NOTE_SUFFIX);
+		Data data = new Data();
+		try {
+			MessageDigest digest = MessageDigest.getInstance("MD5");
+			Bitmap bmp = BitmapFactory.decodeResource(this.getResources(), R.drawable.title);
+			ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+			byte[] byteArray = stream.toByteArray();
+			
+			data.setBody(byteArray);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		Resource resource = new Resource();
 		resource.setMime("image/png");
-		resource.setData(data)
-		Data data = new Data();
-		data.
+		resource.setData(data);
+		
+		List<Resource> resources = new ArrayList<Resource>();
+		resources.add(resource);
+		
+		note.setResources(resources);
+		
+		
 		try {
 			mEvernoteSession.getClientFactory().createNoteStoreClient()
 					.createNote(note, new OnClientCallback<Note>() {

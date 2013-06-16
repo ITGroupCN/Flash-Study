@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
     android:background="@color/black"
     android:orientation="horizontal" >
     
@@ -21,18 +21,24 @@
 	    android:layout_height="50dp"
 	    android:background="@color/orange"/>
 	
-	<Button android:id="@+id/Header_cameraUpload"
+	<ImageView android:id="@+id/Header_cameraUpload"
 	    android:layout_width="50dp"
 	    android:layout_height="50dp"
-	    android:background="@drawable/ic_action_photo"/>
+	    android:padding="10dp"
+	    android:src="@drawable/button_camera_selector"
+	    android:clickable="true"
+	    android:scaleType="fitCenter"/>
 	
 	<View
 	    android:layout_width="1dp"
 	    android:layout_height="50dp"
 	    android:background="@color/orange"/>
 	
-	<Button android:id="@+id/Header_formUpload"
+	<ImageView android:id="@+id/Header_formUpload"
 	    android:layout_width="50dp"
 	    android:layout_height="50dp"
-	    android:background="@drawable/ic_action_form"/>
+	    android:padding="10dp"
+	    android:src="@drawable/button_form_selector"
+	    android:scaleType="fitCenter"
+	    android:clickable="true"/>
 </LinearLayout>
