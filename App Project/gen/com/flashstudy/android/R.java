@@ -12,7 +12,9 @@ public final class R {
     }
     public static final class color {
         public static final int black=0x7f050001;
+        public static final int dark_grey=0x7f050005;
         public static final int green=0x7f050003;
+        public static final int light_grey=0x7f050004;
         public static final int orange=0x7f050002;
         public static final int white=0x7f050000;
     }
@@ -27,19 +29,28 @@ public final class R {
         public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
-        public static final int button_camera_selector=0x7f020000;
-        public static final int button_form_selector=0x7f020001;
-        public static final int camera=0x7f020002;
-        public static final int camera_pressed=0x7f020003;
-        public static final int form=0x7f020004;
-        public static final int form_pressed=0x7f020005;
-        public static final int header_bg=0x7f020006;
-        public static final int ic_action_form=0x7f020007;
-        public static final int ic_action_photo=0x7f020008;
-        public static final int ic_launcher=0x7f020009;
-        public static final int title=0x7f02000a;
+        public static final int bgpattern=0x7f020000;
+        public static final int button_camera_selector=0x7f020001;
+        public static final int button_form_selector=0x7f020002;
+        public static final int camera=0x7f020003;
+        public static final int camera_pressed=0x7f020004;
+        public static final int form=0x7f020005;
+        public static final int form_pressed=0x7f020006;
+        public static final int header_bg=0x7f020007;
+        public static final int headerlogo=0x7f020008;
+        public static final int ic_action_form=0x7f020009;
+        public static final int ic_action_photo=0x7f02000a;
+        public static final int ic_launcher=0x7f02000b;
+        public static final int list_element_flashcard_selector=0x7f02000c;
+        public static final int list_element_flashcard_text_selector=0x7f02000d;
+        public static final int menubarbg=0x7f02000e;
+        public static final int tiled_background=0x7f02000f;
+        public static final int tiled_menu_background=0x7f020010;
+        public static final int title=0x7f020011;
     }
     public static final class id {
+        public static final int FlashcardBack_definition=0x7f090013;
+        public static final int FlashcardFront_term=0x7f090014;
         public static final int FormActivity_addButton=0x7f090009;
         public static final int FormActivity_definition=0x7f090007;
         public static final int FormActivity_descInput=0x7f090005;
@@ -50,22 +61,27 @@ public final class R {
         public static final int FormActivity_nameText=0x7f090002;
         public static final int FormActivity_submitButton=0x7f09000a;
         public static final int FormActivity_term=0x7f090006;
-        public static final int Header_cameraUpload=0x7f09000f;
-        public static final int Header_formUpload=0x7f090010;
-        public static final int ListElementFlashcard_dateCreated=0x7f090012;
-        public static final int ListElementFlashcard_description=0x7f090013;
-        public static final int ListElementFlashcard_name=0x7f090011;
-        public static final int ListElementFlashcard_numFlashcard=0x7f090015;
-        public static final int ListElementFlashcard_type=0x7f090014;
-        public static final int ListElementInput_definition=0x7f090017;
-        public static final int ListElementInput_term=0x7f090016;
+        public static final int Header_cameraUpload=0x7f090016;
+        public static final int Header_formUpload=0x7f090017;
+        public static final int ListElementFlashcard_dateCreated=0x7f090019;
+        public static final int ListElementFlashcard_description=0x7f09001a;
+        public static final int ListElementFlashcard_name=0x7f090018;
+        public static final int ListElementFlashcard_numFlashcard=0x7f09001c;
+        public static final int ListElementFlashcard_type=0x7f09001b;
+        public static final int ListElementInput_definition=0x7f09001e;
+        public static final int ListElementInput_term=0x7f09001d;
         public static final int MenuActivity_layout=0x7f09000b;
         public static final int MenuActivity_setList=0x7f09000c;
-        public static final int action_settings=0x7f090019;
-        public static final int esdk__switch_service=0x7f090018;
-        public static final int esdk__webview=0x7f09000d;
+        public static final int SetViewerActivity_flashcardBack=0x7f090011;
+        public static final int SetViewerActivity_flashcardFront=0x7f090010;
+        public static final int SetViewerActivity_flipper=0x7f09000f;
+        public static final int SetViewerActivity_pos=0x7f09000e;
+        public static final int SetViewerActivity_setName=0x7f09000d;
+        public static final int action_settings=0x7f090020;
+        public static final int esdk__switch_service=0x7f09001f;
+        public static final int esdk__webview=0x7f090012;
         public static final int header=0x7f090001;
-        public static final int header_logo=0x7f09000e;
+        public static final int header_logo=0x7f090015;
     }
     public static final class layout {
         public static final int activity_camera=0x7f030000;
@@ -73,9 +89,11 @@ public final class R {
         public static final int activity_menu=0x7f030002;
         public static final int activity_set_viewer=0x7f030003;
         public static final int esdk__webview=0x7f030004;
-        public static final int layout_header=0x7f030005;
-        public static final int list_element_flashcard=0x7f030006;
-        public static final int list_element_input=0x7f030007;
+        public static final int layout_flashcard_back=0x7f030005;
+        public static final int layout_flashcard_front=0x7f030006;
+        public static final int layout_header=0x7f030007;
+        public static final int list_element_flashcard=0x7f030008;
+        public static final int list_element_input=0x7f030009;
     }
     public static final class menu {
         public static final int esdk__oauth=0x7f080000;

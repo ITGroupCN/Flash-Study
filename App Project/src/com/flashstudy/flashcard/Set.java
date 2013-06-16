@@ -3,6 +3,8 @@ package com.flashstudy.flashcard;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.json.JSONArray;
+
 public class Set {
 
 	private ArrayList<Flashcard> _flashcards;
@@ -82,6 +84,13 @@ public class Set {
 	
 	@Override
 	public String toString() {
+		for(Flashcard card : _flashcards) {
+			
+		}
 		return _flashcards.toString();
+	}
+	
+	public static Set fromString() {
+		return new Set()
 	}
 }

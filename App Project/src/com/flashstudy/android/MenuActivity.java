@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -36,7 +37,7 @@ public class MenuActivity extends Activity {
 		cards.add(new Flashcard("fbla", "gay"));
 		cards.add(new Flashcard("michael", "wrassla"));
 		
-		Set set1 = new Set("Test Set", cards, new Date(), FlashcardType.SPANISH, "A test set that shows shravs gay shit.");
+		Set set1 = new Set("Capitulo 4 Vocab", cards, new Date(), FlashcardType.SPANISH, "Imagina Chapter 4");
 		_sets = new ArrayList<Set>();
 		_sets.add(set1);
 		
@@ -46,8 +47,36 @@ public class MenuActivity extends Activity {
 		Typeface tf = Typeface.createFromAsset(getAssets(),"century_gothic.ttf");
 		setTypeface(layout, tf);
 		
-		ListView setList = (ListView) findViewById(R.id.MenuActivity_setList);
+		ImageView formButton = (ImageView) layout.findViewById(R.id.Header_formUpload);
+		formButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(MenuActivity.this, FormEntryActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		ImageView cameraButton = (ImageView) layout.findViewById(R.id.Header_cameraUpload);
+		cameraButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Toast.makeText(MenuActivity.this, "CAMERA BUTTON", Toast.LENGTH_SHORT).show();
+			}
+		});
+		
+		final ListView setList = (ListView) findViewById(R.id.MenuActivity_setList);
 		setList.setAdapter(_flashcardAdapter);
+		setList.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Intent intent = new Intent(MenuActivity.this, SetViewerActivity.class);
+				Set set = (Set) setList.getAdapter().getItem(position);
+				
+			}
+			
+		});
+		
+		setTypeface(layout, tf);
 	}
 	
 	private void setTypeface(View view, Typeface typeface) {
