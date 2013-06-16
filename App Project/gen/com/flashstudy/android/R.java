@@ -27,19 +27,24 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int title=0x7f020001;
+        public static final int ic_action_form=0x7f020000;
+        public static final int ic_action_photo=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int title=0x7f020003;
     }
     public static final class id {
-        public static final int FormActivity_addButton=0x7f090008;
-        public static final int FormActivity_definition=0x7f090006;
-        public static final int FormActivity_descInput=0x7f090004;
-        public static final int FormActivity_descText=0x7f090003;
-        public static final int FormActivity_inputList=0x7f090007;
+        public static final int FormActivity_addButton=0x7f090009;
+        public static final int FormActivity_definition=0x7f090007;
+        public static final int FormActivity_descInput=0x7f090005;
+        public static final int FormActivity_descText=0x7f090004;
+        public static final int FormActivity_inputList=0x7f090008;
         public static final int FormActivity_layout=0x7f090000;
-        public static final int FormActivity_nameInput=0x7f090002;
-        public static final int FormActivity_nameText=0x7f090001;
-        public static final int FormActivity_term=0x7f090005;
+        public static final int FormActivity_nameInput=0x7f090003;
+        public static final int FormActivity_nameText=0x7f090002;
+        public static final int FormActivity_term=0x7f090006;
+        public static final int Header_cameraUpload=0x7f09000d;
+        public static final int Header_formUpload=0x7f09000e;
+        public static final int Header_logo=0x7f09000c;
         public static final int ListElementFlashcard_dateCreated=0x7f090010;
         public static final int ListElementFlashcard_description=0x7f090011;
         public static final int ListElementFlashcard_name=0x7f09000f;
@@ -47,20 +52,18 @@ public final class R {
         public static final int ListElementFlashcard_type=0x7f090012;
         public static final int ListElementInput_definition=0x7f090015;
         public static final int ListElementInput_term=0x7f090014;
-        public static final int MenuActivity_buttonPanel=0x7f09000c;
-        public static final int MenuActivity_cameraUploadButton=0x7f09000d;
-        public static final int MenuActivity_formUploadButton=0x7f09000e;
-        public static final int MenuActivity_layout=0x7f090009;
-        public static final int MenuActivity_logo=0x7f09000a;
+        public static final int MenuActivity_layout=0x7f09000a;
         public static final int MenuActivity_setList=0x7f09000b;
         public static final int action_settings=0x7f090016;
+        public static final int header=0x7f090001;
     }
     public static final class layout {
         public static final int activity_form_entry=0x7f030000;
         public static final int activity_menu=0x7f030001;
         public static final int activity_set_viewer=0x7f030002;
-        public static final int list_element_flashcard=0x7f030003;
-        public static final int list_element_input=0x7f030004;
+        public static final int layout_header=0x7f030003;
+        public static final int list_element_flashcard=0x7f030004;
+        public static final int list_element_input=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f080000;
