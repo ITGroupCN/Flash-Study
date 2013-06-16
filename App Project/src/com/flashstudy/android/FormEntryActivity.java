@@ -1,5 +1,13 @@
 package com.flashstudy.android;
 
-public class FormEntryActivity {
+import android.app.Activity;
+import android.os.Bundle;
 
+public class FormEntryActivity extends Activity {
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+	}
 }
