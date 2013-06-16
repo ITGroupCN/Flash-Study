@@ -7,7 +7,7 @@
     android:background="@color/black"
     android:orientation="vertical" >
     
-     <include android:id="@+id/header" 
+     <include android:id="@+id/FormActivity_header" 
          android:layout_width="wrap_content"
          android:layout_height="wrap_content" 
          layout="@layout/layout_header"/>

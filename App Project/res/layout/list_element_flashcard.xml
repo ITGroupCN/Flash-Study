@@ -13,7 +13,7 @@
 	    android:layout_alignParentTop="true"
 	    android:textColor="@color/orange"
 	    android:layout_marginRight="5dp"
-	    style="@style/DefaultText.Large"/>
+	    style="@style/DefaultText.Medium"/>
 	
 	<TextView android:id="@+id/ListElementFlashcard_dateCreated"
 	    android:layout_width="wrap_content"

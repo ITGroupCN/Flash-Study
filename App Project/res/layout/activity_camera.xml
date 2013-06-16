@@ -2,12 +2,111 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:background="@color/black"
+    android:orientation="horizontal" >
     
-    <Button
+    <include android:id="@+id/CameraActivity_header" 
+         android:layout_width="fill_parent"
+         android:layout_height="50dp" 
+         layout="@layout/layout_header"/>
+     
+     <View
+         android:layout_width="fill_parent"
+         android:layout_height="1dp"
+         android:background="@color/orange"
+         android:layout_marginBottom="10dp"/>
+     
+    <GridLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:text="Save Note"
-        android:onClick="onSaveNote"/>
+        android:layout_height="wrap_content"
+        android:alignmentMode="alignBounds"
+        android:columnOrderPreserved="false"
+        android:columnCount="2">
+        
+        <TextView android:id="@+id/CameraActivity_nameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textColor="@color/white"
+            android:layout_marginRight="8dp"
+            style="@style/DefaultText.Medium"/>
+        
+        <EditText android:id="@+id/CameraActivity_nameInput"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"/>
+        
+        <TextView android:id="@+id/CameraActivity_descText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/desc"
+            android:textColor="@color/white"
+            android:layout_marginRight="8dp"
+            style="@style/DefaultText.Medium"/>
+        
+        <EditText android:id="@+id/CameraActivity_descInput"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"/>
+        
+    </GridLayout>
+    
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/orange"/>
 
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        
+        <TextView android:id="@+id/CameraActivity_term"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+          	android:text="@string/term"
+          	android:textColor="@color/white"
+          	style="@style/DefaultText.Medium"/>
+        
+        <TextView android:id="@+id/CameraActivity_definition"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/definition"
+            android:textColor="@color/white"
+            style="@style/DefaultText.Medium"/>
+        
+    </LinearLayout>
+    
+	<ListView android:id="@+id/CameraActivity_inputList"
+	    android:layout_width="fill_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="1"
+	    android:descendantFocusability="afterDescendants"/>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal">
+	    
+	    <Button android:id="@+id/CameraActivity_add"
+		    android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:text="@string/add"
+		    android:onClick="onAddElement"/>
+	    
+	    <Button android:id="@+id/CameraActivity_submit"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:text="@string/submit"/>
+	    
+	</LinearLayout>
+    
 </LinearLayout>

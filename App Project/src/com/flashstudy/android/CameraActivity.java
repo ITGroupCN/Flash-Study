@@ -1,27 +1,155 @@
 package com.flashstudy.android;
 
-import java.io.ByteArrayOutputStream;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.evernote.client.android.EvernoteSession;
-import com.evernote.client.android.EvernoteSession.EvernoteService;
-import com.evernote.client.android.EvernoteUtil;
-import com.evernote.client.android.OnClientCallback;
-import com.evernote.edam.type.Data;
-import com.evernote.edam.type.Note;
-import com.evernote.edam.type.Resource;
-import com.evernote.thrift.transport.TTransportException;
+import com.flashstudy.flashcard.Flashcard;
+import com.flashstudy.flashcard.FlashcardType;
+import com.flashstudy.flashcard.Set;
+import com.googlecode.tesseract.android.TessBaseAPI;
 
+public class CameraActivity extends Activity {
+	
+	private ArrayList<Flashcard> _flashcards;
+	private InputListAdapter _inputListAdapter;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_camera);
+		
+		try {
+			//Bitmap terms = createBitmap("/sdcard/Documents/phototest.gif");
+			Bitmap terms = createBitmap("/sdcard/Documents/terms.gif");
+			String termsResult = ocr(terms);
+			String[] termList = termsResult.split("\n");
+			
+			Bitmap defs  = createBitmap("/sdcard/Documents/definitions.gif");
+			String defsResult = ocr(defs);
+			String[] defList = termsResult.split("\n");
+			
+			int numRows = (termList.length < defList.length) ? termList.length : defList.length;
+			
+			_flashcards = new ArrayList<Flashcard>();
+			//for(int i = 0; i < numRows; i++)
+				_flashcards.add(new Flashcard(termsResult, defsResult));
+			
+			_inputListAdapter = new InputListAdapter(this, _flashcards);
+			ListView view = (ListView) findViewById(R.id.CameraActivity_inputList);
+			view.setAdapter(_inputListAdapter);
+			
+		} catch(Exception e) {
+			Log.i("ERROR", e.toString());
+		}
+		
+		Typeface tf = Typeface.createFromAsset(getAssets(),"century_gothic.ttf");
+		((TextView) findViewById(R.id.CameraActivity_nameText)).setTypeface(tf);
+		
+		final EditText nameInput = (EditText) findViewById(R.id.CameraActivity_nameInput);
+		nameInput.setTypeface(tf);
+		
+		((TextView) findViewById(R.id.CameraActivity_descText)).setTypeface(tf);
+		
+		final EditText descInput = (EditText) findViewById(R.id.CameraActivity_descInput);
+		descInput.setTypeface(tf);
+		
+		((TextView) findViewById(R.id.CameraActivity_term)).setTypeface(tf);
+		((TextView) findViewById(R.id.CameraActivity_definition)).setTypeface(tf);
+		
+		
+		Button submitButton = (Button) findViewById(R.id.CameraActivity_submit);
+		submitButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Set set = new Set(nameInput.getText().toString(), _inputListAdapter.getFlashcards(), 
+						new Date(), FlashcardType.ENGLISH, descInput.getText().toString());
+				
+				try {
+					FileOutputStream writer = new FileOutputStream(new File("/sdcard/Documents/sets.txt"), true);
+					PrintStream printer = new PrintStream(writer);
+					
+					printer.println(set.toString());
+				} catch(IOException e) {
+					Log.i("FormEntryActivity@submit", "IOError: " + e.toString());
+				}
+				
+				finish();
+			}
+		});
+		LinearLayout header = (LinearLayout) findViewById(R.id.CameraActivity_header);
+		ImageView homeButton = (ImageView) header.findViewById(R.id.Header_logo);
+		homeButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(CameraActivity.this, MenuActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		ImageView formButton = (ImageView) header.findViewById(R.id.Header_formUpload);
+		formButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(CameraActivity.this, FormEntryActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		ImageView cameraButton = (ImageView) header.findViewById(R.id.Header_cameraUpload);
+		cameraButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Toast.makeText(CameraActivity.this, "CAMERA BUTTON", Toast.LENGTH_SHORT).show();
+			}
+		});
+	}
+	
+	public void onAddElement(View view) {
+		_flashcards.add(new Flashcard("", ""));
+		_inputListAdapter.notifyDataSetChanged();
+	}
+	
+	public Bitmap createBitmap(String filePath) throws IOException {
+		Bitmap bitmap = BitmapFactory.decodeStream(new FileInputStream(new File(filePath)));
+		return bitmap.copy(Bitmap.Config.ARGB_8888, true);
+	}
+
+	public String ocr(Bitmap bitmap) {
+		TessBaseAPI baseApi = new TessBaseAPI();
+		// DATA_PATH = Path to the storage
+		// lang for which the language data exists, usually "eng"
+		
+		baseApi.init("/sdcard/Documents", "eng"); baseApi.setImage(bitmap);
+		String recognizedText = baseApi.getUTF8Text();
+		baseApi.end();
+		bitmap.recycle();
+		return recognizedText;
+	}
+}
+
+/*
 public class CameraActivity extends Activity {
 
 	// Connect to evernote
@@ -100,4 +228,4 @@ public class CameraActivity extends Activity {
 		}
 		
 	}
-}
+}*/

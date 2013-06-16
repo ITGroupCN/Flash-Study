@@ -9,11 +9,14 @@
         android:targetSdkVersion="17" />
     
 	<uses-permission android:name="android.permission.INTERNET" />
-    
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:theme="@android:style/Theme.Black.NoTitleBar" >
         
         <activity
@@ -26,7 +29,7 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="com.flashstudy.android.CameraAsctivity" />
+        <activity android:name="com.flashstudy.android.CameraActivity" />
         <activity android:name="com.flashstudy.android.FormEntryActivity" />
         <activity android:name="com.flashstudy.android.SetViewerActivity" 
             android:screenOrientation="portrait"/>

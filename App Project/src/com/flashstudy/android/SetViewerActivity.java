@@ -46,7 +46,8 @@ public class SetViewerActivity extends Activity {
 		_tfItalic = Typeface.createFromAsset(getAssets(),"century_gothic_italic.ttf");
 		setTypeface(layout, _tf);
 		
-		ImageView homeButton = (ImageView) layout.findViewById(R.id.Header_logo);
+		LinearLayout header = (LinearLayout) findViewById(R.id.SetViewActivity_header);
+		ImageView homeButton = (ImageView) header.findViewById(R.id.Header_logo);
 		homeButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -55,7 +56,7 @@ public class SetViewerActivity extends Activity {
 			}
 		});
 		
-		ImageView formButton = (ImageView) layout.findViewById(R.id.Header_formUpload);
+		ImageView formButton = (ImageView) header.findViewById(R.id.Header_formUpload);
 		formButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -64,7 +65,7 @@ public class SetViewerActivity extends Activity {
 			}
 		});
 		
-		ImageView cameraButton = (ImageView) layout.findViewById(R.id.Header_cameraUpload);
+		ImageView cameraButton = (ImageView) header.findViewById(R.id.Header_cameraUpload);
 		cameraButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {

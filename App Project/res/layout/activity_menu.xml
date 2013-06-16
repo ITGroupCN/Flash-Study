@@ -6,9 +6,9 @@
     android:background="@drawable/tiled_background"
     android:orientation="vertical" >
     
-    <include android:id="@+id/header"
+    <include android:id="@+id/MenuActivity_header"
         android:layout_width="fill_parent"
-        android:height="50dp" 
+        android:layout_height="50dp" 
         layout="@layout/layout_header"/>
     
     <View
