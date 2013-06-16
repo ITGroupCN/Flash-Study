@@ -19,7 +19,7 @@ import com.flashstudy.flashcard.Set;
 public class MenuActivity extends Activity {
 
 	private FlashcardListAdapter _flashcardAdapter;
-	private Set[] _sets;
+	private ArrayList<Set> _sets;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -32,16 +32,19 @@ public class MenuActivity extends Activity {
 		cards.add(new Flashcard("michael", "wrassla"));
 		
 		Set set1 = new Set("Test Set", cards, new Date(), FlashcardType.SPANISH, "A test set that shows shravs gay shit.");
-		
-		_sets = new Set[1];
-		_sets[0] = set1;
+		_sets = new ArrayList<Set>();
+		_sets.add(set1);
 		
 		_flashcardAdapter = new FlashcardListAdapter(this, _sets);
+		
+		_sets.add(set1);
+		_flashcardAdapter.notifyDataSetChanged();
+		
 		ListView setList = (ListView) findViewById(R.id.MenuActivity_setList);
 		setList.setAdapter(_flashcardAdapter);
 		
 		LinearLayout layout = (LinearLayout) findViewById(R.id.MenuActivity_layout);
-		Typeface tf = Typeface.createFromAsset(getAssets(),"century_gothic_italic.ttf");
+		Typeface tf = Typeface.createFromAsset(getAssets(),"century_gothic.ttf");
 		setTypeface(layout, tf);
 	}
 	
