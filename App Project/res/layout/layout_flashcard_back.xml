@@ -8,5 +8,6 @@
 	<TextView android:id="@+id/FlashcardBack_definition"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    style="@style/DefaultText.Medium"/>
+	    style="@style/DefaultText.Large"/>
+	
 </LinearLayout>

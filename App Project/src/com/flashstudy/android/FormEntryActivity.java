@@ -3,14 +3,17 @@ package com.flashstudy.android;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.flashstudy.flashcard.Flashcard;
 
@@ -40,6 +43,32 @@ public class FormEntryActivity extends Activity {
 		((TextView) findViewById(R.id.FormActivity_term)).setTypeface(tf);
 		((TextView) findViewById(R.id.FormActivity_definition)).setTypeface(tf);
 		
+		LinearLayout layout = (LinearLayout) findViewById(R.id.FormActivity_layout);
+		ImageView homeButton = (ImageView) layout.findViewById(R.id.Header_logo);
+		homeButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(FormEntryActivity.this, MenuActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		ImageView formButton = (ImageView) layout.findViewById(R.id.Header_formUpload);
+		formButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(FormEntryActivity.this, FormEntryActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		ImageView cameraButton = (ImageView) layout.findViewById(R.id.Header_cameraUpload);
+		cameraButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Toast.makeText(FormEntryActivity.this, "CAMERA BUTTON", Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 	
 	public void onAddElement(View view) {

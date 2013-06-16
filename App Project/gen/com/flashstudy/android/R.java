@@ -44,9 +44,10 @@ public final class R {
         public static final int list_element_flashcard_selector=0x7f02000c;
         public static final int list_element_flashcard_text_selector=0x7f02000d;
         public static final int menubarbg=0x7f02000e;
-        public static final int tiled_background=0x7f02000f;
-        public static final int tiled_menu_background=0x7f020010;
-        public static final int title=0x7f020011;
+        public static final int notecard=0x7f02000f;
+        public static final int tiled_background=0x7f020010;
+        public static final int tiled_menu_background=0x7f020011;
+        public static final int title=0x7f020012;
     }
     public static final class id {
         public static final int FlashcardBack_definition=0x7f090012;
@@ -63,6 +64,7 @@ public final class R {
         public static final int FormActivity_term=0x7f090006;
         public static final int Header_cameraUpload=0x7f090015;
         public static final int Header_formUpload=0x7f090016;
+        public static final int Header_logo=0x7f090014;
         public static final int ListElementFlashcard_dateCreated=0x7f090018;
         public static final int ListElementFlashcard_description=0x7f090019;
         public static final int ListElementFlashcard_name=0x7f090017;
@@ -72,14 +74,13 @@ public final class R {
         public static final int ListElementInput_term=0x7f09001c;
         public static final int MenuActivity_layout=0x7f09000b;
         public static final int MenuActivity_setList=0x7f09000c;
-        public static final int SetViewerActivity_flashcardBack=0x7f090011;
-        public static final int SetViewerActivity_flashcardFront=0x7f090010;
-        public static final int SetViewerActivity_flipper=0x7f09000f;
-        public static final int SetViewerActivity_pos=0x7f09000e;
-        public static final int SetViewerActivity_setName=0x7f09000d;
+        public static final int SetViewActivity_header=0x7f09000e;
+        public static final int SetViewActivity_layout=0x7f09000d;
+        public static final int SetViewerActivity_flipper=0x7f090011;
+        public static final int SetViewerActivity_pos=0x7f090010;
+        public static final int SetViewerActivity_setName=0x7f09000f;
         public static final int action_settings=0x7f09001e;
         public static final int header=0x7f090001;
-        public static final int header_logo=0x7f090014;
     }
     public static final class layout {
         public static final int activity_camera=0x7f030000;

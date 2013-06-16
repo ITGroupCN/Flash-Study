@@ -47,6 +47,15 @@ public class MenuActivity extends Activity {
 		Typeface tf = Typeface.createFromAsset(getAssets(),"century_gothic.ttf");
 		setTypeface(layout, tf);
 		
+		ImageView homeButton = (ImageView) layout.findViewById(R.id.Header_logo);
+		homeButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(MenuActivity.this, MenuActivity.class);
+				startActivity(intent);
+			}
+		});
+		
 		ImageView formButton = (ImageView) layout.findViewById(R.id.Header_formUpload);
 		formButton.setOnClickListener(new OnClickListener() {
 			@Override

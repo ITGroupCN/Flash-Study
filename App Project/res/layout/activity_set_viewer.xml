@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/SetViewActivity_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical" >
+    android:orientation="vertical">
+    
+    <include android:id="@+id/SetViewActivity_header"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        layout="@layout/layout_header"/>
     
 	<TextView android:id="@+id/SetViewerActivity_setName"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
+	    android:textColor="@color/orange"
 	    style="@style/DefaultText.Large"/>
 	
 	<TextView android:id="@+id/SetViewerActivity_pos"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    style="@style/DefaultText.Medium"/>
+	    android:textColor="@color/white"
+	    style="@style/DefaultText.Large"/>
 	
-	<ViewFlipper android:id="@+id/SetViewerActivity_flipper"
+	<FrameLayout android:id="@+id/SetViewerActivity_flipper"
 	    android:layout_width="fill_parent"
 	    android:layout_height="0dp"
-	    android:layout_weight="1">
-	    
-	    <include android:id="@+id/SetViewerActivity_flashcardFront"
-	        layout="@layout/layout_flashcard_front"/>
-	    
-	    <include android:id="@+id/SetViewerActivity_flashcardBack"
-	        layout="@layout/layout_flashcard_back"/>
-	    
-	</ViewFlipper>
+	    android:layout_weight="1"
+	    android:background="@drawable/notecard"/>
+	
 </LinearLayout>
