@@ -3,8 +3,6 @@ package com.flashstudy.flashcard;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.json.JSONArray;
-
 public class Set {
 
 	private ArrayList<Flashcard> _flashcards;
@@ -84,13 +82,25 @@ public class Set {
 	
 	@Override
 	public String toString() {
-		for(Flashcard card : _flashcards) {
-			
-		}
-		return _flashcards.toString();
+		String obj = _name+","+_dateCreated.getTime()+","+_type.toString()+","+_description;
+		for(Flashcard card : _flashcards)
+			obj += "," + card.toString();
+		
+		return obj;
 	}
 	
-	public static Set fromString() {
-		return new Set()
+	public static Set fromString(String str) {
+		String val[] = str.split(",");
+		ArrayList<Flashcard> flashcards = new ArrayList<Flashcard>();
+		
+		String name = val[0];
+		Date   date = new Date(Long.valueOf(val[1]));
+		FlashcardType type = FlashcardType.valueOf(val[2]);
+		String desc = val[3];
+		
+		for(int i = 4; i < val.length; i++)
+			flashcards.add(Flashcard.fromString(val[i]));
+		
+		return new Set(name, flashcards, date, type, desc);
 	}
 }

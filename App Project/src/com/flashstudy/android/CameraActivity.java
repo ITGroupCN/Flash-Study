@@ -72,7 +72,7 @@ public class CameraActivity extends Activity {
 		resources.add(resource);
 		
 		note.setResources(resources);
-        Tesseract instance = Tesseract.getInstance();  // JNA Interface Mapping
+        //Tesseract instance = Tesseract.getInstance();  // JNA Interface Mapping
 		
 				
 		

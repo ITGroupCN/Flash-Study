@@ -29,4 +29,9 @@ public class Flashcard {
 	public String toString() {
 		return _term + ":" + _definition;
 	}
+	
+	public static Flashcard fromString(String str) {
+		String[] val = str.split(":");
+		return new Flashcard(val[0], val[1]);
+	}
 }

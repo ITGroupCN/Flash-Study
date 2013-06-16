@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.flashstudy.flashcard.Set;
 
@@ -18,6 +19,7 @@ public class SetViewerActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_set_viewer);
 		
-		_set = (Set) this.getIntent().getExtras().get("set");
+		_set = Set.fromString((String) this.getIntent().getExtras().get("set"));
+		Toast.makeText(this, _set.toString(), Toast.LENGTH_SHORT).show();
 	}
 }

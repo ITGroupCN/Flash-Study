@@ -71,7 +71,8 @@ public class MenuActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Intent intent = new Intent(MenuActivity.this, SetViewerActivity.class);
 				Set set = (Set) setList.getAdapter().getItem(position);
-				
+				intent.putExtra("set", set.toString());
+				startActivity(intent);
 			}
 			
 		});
