@@ -4,9 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
+    android:background="@color/black"
     android:orientation="vertical" >
     
-     <include android:id="@+id/header" layout="@layout/layout_header"/>
+     <include android:id="@+id/header" 
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" 
+         layout="@layout/layout_header"/>
+     
+     <View
+         android:layout_width="fill_parent"
+         android:layout_height="1dp"
+         android:background="@color/orange"
+         android:layout_marginBottom="10dp"/>
      
     <GridLayout
         android:layout_width="fill_parent"
@@ -45,9 +55,9 @@
     
     <View
         android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@color/orange"/>
 
     <LinearLayout 
@@ -78,12 +88,26 @@
 	<ListView android:id="@+id/FormActivity_inputList"
 	    android:layout_width="fill_parent"
 	    android:layout_height="0dp"
-	    android:layout_weight="1"/>
+	    android:layout_weight="1"
+	    android:descendantFocusability="afterDescendants"/>
 	
-	<Button android:id="@+id/FormActivity_addButton"
+	<LinearLayout
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:text="@string/add"
-	    android:onClick="onAddElement"/>
-	
+	    android:orientation="horizontal">
+	    
+	    <Button android:id="@+id/FormActivity_addButton"
+		    android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:text="@string/add"
+		    android:onClick="onAddElement"/>
+	    
+	    <Button android:id="@+id/FormActivity_submitButton"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:text="@string/submit"/>
+	    
+	</LinearLayout>
 </LinearLayout>

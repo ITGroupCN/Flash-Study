@@ -7,7 +7,8 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,10 +24,6 @@ public class FormEntryActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_form_entry);
 		
-		LinearLayout layout = (LinearLayout) findViewById(R.layout.activity_form_entry);
-		Typeface tf = Typeface.createFromAsset(getAssets(),"century_gothic.ttf");
-		setTypeface(layout, tf);
-		
 		Flashcard card = new Flashcard("", "");
 		_flashcards = new ArrayList<Flashcard>();
 		_flashcards.add(card);
@@ -34,6 +31,15 @@ public class FormEntryActivity extends Activity {
 		_inputListAdapter = new InputListAdapter(this, _flashcards);
 		ListView listView = (ListView) findViewById(R.id.FormActivity_inputList);
 		listView.setAdapter(_inputListAdapter);
+		
+		Typeface tf = Typeface.createFromAsset(getAssets(),"century_gothic.ttf");
+		((TextView) findViewById(R.id.FormActivity_nameText)).setTypeface(tf);
+		((TextView) findViewById(R.id.FormActivity_nameInput)).setTypeface(tf);
+		((TextView) findViewById(R.id.FormActivity_descText)).setTypeface(tf);
+		((TextView) findViewById(R.id.FormActivity_descInput)).setTypeface(tf);
+		((TextView) findViewById(R.id.FormActivity_term)).setTypeface(tf);
+		((TextView) findViewById(R.id.FormActivity_definition)).setTypeface(tf);
+		
 	}
 	
 	public void onAddElement(View view) {

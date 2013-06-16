@@ -17,6 +17,14 @@ public class Flashcard {
 		return _definition;
 	}
 	
+	public void setTerm(String term) {
+		_term = term;
+	}
+	
+	public void setDefinition(String definition) {
+		_definition = definition;
+	}
+	
 	@Override
 	public String toString() {
 		return _term + ":" + _definition;
