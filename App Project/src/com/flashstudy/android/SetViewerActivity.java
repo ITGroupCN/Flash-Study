@@ -1,12 +1,15 @@
 package com.flashstudy.android;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -69,7 +72,10 @@ public class SetViewerActivity extends Activity {
 		cameraButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Toast.makeText(SetViewerActivity.this, "CAMERA BUTTON", Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File("/sdcard/Documents/terms.gif"))); // set the image file name
+				startActivityForResult(intent, 100);
+				
 			}
 		});
 		
@@ -77,6 +83,22 @@ public class SetViewerActivity extends Activity {
 		FlashcardView view = new FlashcardView(this);
 		frame.addView(view);
 		view.setFlashcards(_set.getAllFlashcards());
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    if (requestCode == 100) {
+	        if (resultCode == RESULT_OK) {
+	        	Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File("/sdcard/Documents/definitions.gif"))); // set the image file name
+				startActivityForResult(intent, 101);
+	        }
+	    } else if(requestCode == 101) {
+	    	if(resultCode == RESULT_OK) {
+	    		Intent intent = new Intent(SetViewerActivity.this, CameraActivity.class);
+	        	startActivity(intent);
+	    	}
+	    }
 	}
 	
 	private void setTypeface(View view, Typeface typeface) {

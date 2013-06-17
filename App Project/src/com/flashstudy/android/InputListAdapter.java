@@ -21,12 +21,21 @@ public class InputListAdapter extends BaseAdapter {
 	private LayoutInflater _inflater;
 	private Typeface _tf;
 	private Context _context;
+	private boolean camera;
 	
 	public InputListAdapter(Context context, ArrayList<Flashcard> flashcards) {
 		_flashcards = flashcards;
 		_inflater = LayoutInflater.from(context);
 		_context = context;
 		_tf = Typeface.createFromAsset(context.getAssets(),"century_gothic.ttf");
+	}
+	
+	public InputListAdapter(Context context, ArrayList<Flashcard> flashcards, boolean _camera) {
+		_flashcards = flashcards;
+		_inflater = LayoutInflater.from(context);
+		_context = context;
+		_tf = Typeface.createFromAsset(context.getAssets(),"century_gothic.ttf");
+		camera = _camera;
 	}
 	
 	public ArrayList<Flashcard> getFlashcards() {
@@ -60,6 +69,10 @@ public class InputListAdapter extends BaseAdapter {
 			holder._definitionField = (EditText) convertView.findViewById(R.id.ListElementInput_definition);
 			setTypeface(convertView, _tf);
 			
+			if(camera && position < _flashcards.size()) {
+				holder._termField.setText(_flashcards.get(position).getTerm());
+				holder._definitionField.setText(_flashcards.get(position).getDefinition());
+			}
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();

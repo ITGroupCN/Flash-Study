@@ -10,7 +10,9 @@ import java.util.Date;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -101,9 +103,28 @@ public class FormEntryActivity extends Activity {
 		cameraButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Toast.makeText(FormEntryActivity.this, "CAMERA BUTTON", Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File("/sdcard/Documents/terms.gif"))); // set the image file name
+				startActivityForResult(intent, 100);
+				
 			}
 		});
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    if (requestCode == 100) {
+	        if (resultCode == RESULT_OK) {
+	        	Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File("/sdcard/Documents/definitions.gif"))); // set the image file name
+				startActivityForResult(intent, 101);
+	        }
+	    } else if(requestCode == 101) {
+	    	if(resultCode == RESULT_OK) {
+	    		Intent intent = new Intent(FormEntryActivity.this, CameraActivity.class);
+	        	startActivity(intent);
+	    	}
+	    }
 	}
 	
 	public void onAddElement(View view) {

@@ -13,7 +13,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -42,21 +44,22 @@ public class CameraActivity extends Activity {
 		
 		try {
 			//Bitmap terms = createBitmap("/sdcard/Documents/phototest.gif");
-			Bitmap terms = createBitmap("/sdcard/Documents/terms.gif");
+			//Bitmap terms = createBitmap("/sdcard/Documents/terms.gif");
+			Bitmap terms = createBitmap("/sdcard/Documents/phototesta1.gif");
 			String termsResult = ocr(terms);
 			String[] termList = termsResult.split("\n");
 			
-			Bitmap defs  = createBitmap("/sdcard/Documents/definitions.gif");
+			//Bitmap defs  = createBitmap("/sdcard/Documents/definitions.gif");
+			Bitmap defs  = createBitmap("/sdcard/Documents/phototesta2.gif");
 			String defsResult = ocr(defs);
-			String[] defList = termsResult.split("\n");
-			
+			String[] defList = defsResult.split("\n");
 			int numRows = (termList.length < defList.length) ? termList.length : defList.length;
 			
 			_flashcards = new ArrayList<Flashcard>();
-			//for(int i = 0; i < numRows; i++)
-				_flashcards.add(new Flashcard(termsResult, defsResult));
+			for(int i = 0; i < numRows; i++)
+				_flashcards.add(new Flashcard(termList[i], defList[i]));
 			
-			_inputListAdapter = new InputListAdapter(this, _flashcards);
+			_inputListAdapter = new InputListAdapter(this, _flashcards, true);
 			ListView view = (ListView) findViewById(R.id.CameraActivity_inputList);
 			view.setAdapter(_inputListAdapter);
 			
@@ -121,9 +124,28 @@ public class CameraActivity extends Activity {
 		cameraButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Toast.makeText(CameraActivity.this, "CAMERA BUTTON", Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File("/sdcard/Documents/terms.gif"))); // set the image file name
+				startActivityForResult(intent, 100);
+				
 			}
 		});
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    if (requestCode == 100) {
+	        if (resultCode == RESULT_OK) {
+	        	Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File("/sdcard/Documents/definitions.gif"))); // set the image file name
+				startActivityForResult(intent, 101);
+	        }
+	    } else if(requestCode == 101) {
+	    	if(resultCode == RESULT_OK) {
+	    		Intent intent = new Intent(CameraActivity.this, CameraActivity.class);
+	        	startActivity(intent);
+	    	}
+	    }
 	}
 	
 	public void onAddElement(View view) {
